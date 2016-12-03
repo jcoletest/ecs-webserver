@@ -46,6 +46,7 @@ make_task_def(){
 			"essential": true,
 			"memory": 200,
 			"cpu": 10,
+      "taskRoleArn": "arn:aws:iam::%s:role/ecsTasksS3BucketRole",
 			"portMappings": [
 				{
 					"containerPort": 8080
@@ -54,7 +55,7 @@ make_task_def(){
 		}
 	]'
 	
-	task_def=$(printf "$task_template" $AWS_ACCOUNT_ID $CIRCLE_SHA1)
+	task_def=$(printf "$task_template" $AWS_ACCOUNT_ID $CIRCLE_SHA1 $AWS_ACCOUNT_ID)
 }
 
 push_ecr_image(){
