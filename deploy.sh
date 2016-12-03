@@ -11,7 +11,7 @@ configure_aws_cli(){
 
 deploy_cluster() {
 
-    family="ecs-webserver-task-family"
+    family="ecs-webserver-task"
 
     make_task_def
     register_definition
@@ -46,7 +46,6 @@ make_task_def(){
 			"essential": true,
 			"memory": 200,
 			"cpu": 10,
-      "taskRoleArn": "arn:aws:iam::%s:role/ecsTasksS3BucketRole",
 			"portMappings": [
 				{
 					"containerPort": 8080
